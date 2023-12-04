@@ -1,0 +1,10 @@
+
+version: "3"
+services:
+  datascience-notebook:
+    image: jupyter/pyspark-notebook
+    volumes:
+      - "./:/home/jovyan/"
+    ports:
+      - 8888:8888
+    container_name: pyspark-notebook
