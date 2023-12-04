@@ -2,4 +2,4 @@
 .*/*
 
 # Ignore the processed_data folder
-/processed_data/
+processed_data/
