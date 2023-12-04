@@ -21,6 +21,8 @@ Einreichungen:
 6. Jupyter-Notebook für eine einfache Datenanalyse eines Datensatzes von 50000 Sekunden Messung
 7. Eine Präsentation und GitHub Repo über die oben genannten Einreichungen
 
+---
+
 ### 1. Fragen zur Anforderungserhebung
 
   - Welche Art von Vorverarbeitung ist erforderlich, bevor die Daten in das ML-Modell eingespeist werden?
@@ -39,14 +41,18 @@ Einreichungen:
   - **Azure Keyvault**: Für die Speicherung von Geheimnissen wie API-Schlüssel.
   - **Azure DevOps**: Für die CI/CD-Pipeline, besonders wenn die Bereitstellung automatisiert werden soll.
   - **Azure Monitor**: Für die Überwachung der Datenverarbeitung und der Infrastruktur.
+
 ### 3. Annahmen und Anpassungsfähigkeit
+
   - **Annahme zur Häufigkeit und zum Volumen**: Wenn Daten weniger häufig oder in kleineren Volumina gesendet werden, könnten einfachere Datenverarbeitungsmethoden ausreichend sein.
   - **Komplexitätsannahme**: Wenn die Daten eine umfangreiche Vorverarbeitung erfordern, könnten robustere Azure-Dienste wie Databricks notwendig sein.
   - **Annahme zur Realtimeverarbeitung**: Der Bedarf an Realtimeverarbeitung beeinflusst, ob Sie Azure Functions (für leichte, Realtimeverarbeitung) oder Azure Stream Analytics (für intensivere Streamverarbeitung) wählen.
+\
+---
 
 ### 4. Vorgeschlagene Architektur:
 
-![Architecture](https://github.com/mohantypunit/data_engineering/blob/main/architecture.png?raw=true)
+![Architecture](https://github.com/mohantypunit/data_engineering/blob/main/img/architecture.png?raw=true)
 
 - Aufnahme: Azure Functions zur Aufnahme von Daten vom Sensor.
 - Verarbeitung: Azure Functions für die anfängliche Verarbeitung und Transformation.
@@ -56,12 +62,16 @@ Einreichungen:
 - Überwachung: Azure Monitor für die Überwachung der Datenverarbeitung und der Infrastruktur.
 - CI/CD: Azure DevOps für die Bereitstellung der Architektur.
 - Geheimnisspeicherung: Azure Keyvault für die Speicherung von Geheimnissen wie API-Schlüssel.
+- Kostenmanagement und Billing: Azure Cost Management und Billing für die Überwachung und Kontrolle der Ausgaben in Azure.
+- Identitäts- und Zugriffsmanagement: Azure Active Directory (Azure AD) für sicheres Identitäts- und Zugriffsmanagement.
+- Compliance und Governance: Azure Policy für das Definieren und Durchsetzen von Richtlinien zur Sicherstellung der Compliance und der Best Practices.
 
 _**Annahmen**_
 
 In dieser Architektur sind die wichtigsten Annahmen:
-
-   - Die Sensordaten können effizient vom Azure IoT Hub verwaltet werden.
+   - Die Daten werden in einem JSON-Format gesendet.
+   - Die Daten werden durch eine API verfügbar gemacht.
+   - Als Datenquelle wird ein einzelner Sensor verwendet und die Daten werden mit einer Frequenz von 1 Messung pro Sekunde gesendet d.h. werden die Daten durch einfacher Architektur prozessiert.
    - Realtimeverarbeitung ist nicht intensiv rechenintensiv, was Azure Functions zu einer praktikablen Option macht.
    - Das bestehende ML-Modell kann mit dem Azure Machine Learning Service integriert werden.
 
@@ -71,22 +81,25 @@ Einige Unsicherheiten, die auftreten können, sind:
    - Skalierungsbedarf: Wenn das Datenvolumen oder die Geschwindigkeit unerwartet zunehmen, muss die Architektur möglicherweise neu bewertet werden.
    - Integrationskomplexität: Die Integration des bestehenden ML-Modells mit Azure-Diensten könnte unvorhergesehene Herausforderungen darstellen.
 
+---
 
 ## Python-Skripte
    To run the following scripts:
-   1. install docker
-   2. clone the repository
-   3. cd into the repository
-   4. run the following command: 
-       ```docker-compose up```
-   5. when you see the following link in the terminal, click on it to open the jupyter notebook:
-       ```http://http://127.0.0.1:8888/lab?token=<a long token>```
-   6. open a new terminal in the jupyter lab and run the following command to run the python scripts:
-       ```python transform.py```
-   7. the transformed data will be saved in the processed_data folder in parquet format divided into partitions based on the year, month, day, and hour of the timestamp.
-   8. the transformed data can be read using the following command:
-       ```spark.read.parquet("processed_data")```
-   9. open the data_analysis.ipynb notebook to see a simple data analysis of the data.
+   1. Docker installieren.
+   2. Klonen Sie das Repository.
+   3. Wechseln Sie in das Verzeichnis des Repositories.
+   4. Führen Sie den folgenden Befehl aus:
+   5. docker-compose up
+   6. Wenn Sie den folgenden Link im Terminal sehen, klicken Sie darauf, um das Jupyter-Notebook zu öffnen:
+        ```http://127.0.0.1:8888/lab?token=<long token>```
+   7. Öffnen Sie ein neues Terminal im Jupyter Lab und führen Sie den folgenden Befehl aus, um die Python-Skripte auszuführen:
+        ```python transform.py```
+   8. Die transformierten Daten werden im Ordner 'processed_data' im Parquet-Format gespeichert, aufgeteilt in Partitionen basierend auf dem Jahr, Monat, Tag und Stunde des Zeitstempels.
+   9. Die transformierten Daten können mit dem folgenden Befehl gelesen werden:
+            ```spark.read.parquet("processed_data")```
+   10. Öffnen Sie das Notebook 'data_analysis.ipynb', um eine einfache Datenanalyse der Daten zu sehen.
+
+---
 
 ### 5. Python-Skript für die Umwandlung von JSON in Time-Series geeignete Datenstrukturen
     
@@ -112,10 +125,16 @@ Skript-Erklärung:
 
 ### 6. Jupyter-Notebook für eine einfache Datenanalyse eines Datensatzes von 50000 Sekunden Messung
 
+Dieses Jupyter-Notebook verwendet PySpark, um eine einfache Datenanalyse eines Datensatzes von 50000 Sekunden Messung durchzuführen. Das Notebook durchläuft mehrere Schritte, um die Daten zu bereinigen, verstehen und schließlich zu visualisieren.
 
-
-
-
-
+Plots:
+1. **Boxplot**: Ein Boxplot der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+  ![BoxPlot](https://github.com/mohantypunit/data_engineering/blob/main/img/boxplot.png?raw=true)
+2. **Zeitreihenplot**: Ein Zeitreihenplot der 'consumption_kwh'-Werte über die Zeit.
+  ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/../../../../../../../img/timeseriesplot_kwh.png?raw=true)
+3. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+  ![histogram](https://github.com/mohantypunit/data_engineering/blob/main/img/histogram.png?raw=true)
+4. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
+  ![rolling_mean](https://github.com/mohantypunit/data_engineering/blob/main/img/../../../../../../../img/rollin-avg-hour.png?raw=true)
 
 
