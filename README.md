@@ -131,10 +131,10 @@ Plots:
 1. **Boxplot**: Ein Boxplot der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
   ![BoxPlot](https://github.com/mohantypunit/data_engineering/blob/main/img/boxplot.png?raw=true)
 2. **Zeitreihenplot**: Ein Zeitreihenplot der 'consumption_kwh'-Werte über die Zeit.
-  ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/../../../../../../../img/timeseriesplot_kwh.png?raw=true)
-3. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+  ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/timeseriesplot_kwh.png?raw=true)
+1. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
   ![histogram](https://github.com/mohantypunit/data_engineering/blob/main/img/histogram.png?raw=true)
-4. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
-  ![rolling_mean](https://github.com/mohantypunit/data_engineering/blob/main/img/../../../../../../../img/rollin-avg-hour.png?raw=true)
+1. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
+  ![rolling_mean](https://github.com/mohantypunit/data_engineering/blob/main/img/rollin-avg-hour.png?raw=true)
 
 
