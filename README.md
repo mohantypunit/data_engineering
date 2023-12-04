@@ -89,15 +89,19 @@ Einige Unsicherheiten, die auftreten können, sind:
    2. Klonen Sie das Repository.
    3. Wechseln Sie in das Verzeichnis des Repositories.
    4. Führen Sie den folgenden Befehl aus:
-   5. docker-compose up
-   6. Wenn Sie den folgenden Link im Terminal sehen, klicken Sie darauf, um das Jupyter-Notebook zu öffnen:
-        ```http://127.0.0.1:8888/lab?token=<long token>```
-   7. Öffnen Sie ein neues Terminal im Jupyter Lab und führen Sie den folgenden Befehl aus, um die Python-Skripte auszuführen:
-        ```python transform.py```
-   8. Die transformierten Daten werden im Ordner 'processed_data' im Parquet-Format gespeichert, aufgeteilt in Partitionen basierend auf dem Jahr, Monat, Tag und Stunde des Zeitstempels.
-   9. Die transformierten Daten können mit dem folgenden Befehl gelesen werden:
-            ```spark.read.parquet("processed_data")```
-   10. Öffnen Sie das Notebook 'data_analysis.ipynb', um eine einfache Datenanalyse der Daten zu sehen.
+
+      ``` docker-compose up```
+   5. Wenn Sie den folgenden Link im Terminal sehen, klicken Sie darauf, um das Jupyter-Notebook zu öffnen:
+
+      ```http://127.0.0.1:8888/lab?token=<long token>```
+   6. Öffnen Sie ein neues Terminal im Jupyter Lab und führen Sie den folgenden Befehl aus, um die Python-Skripte auszuführen:
+
+      ```python transform.py```
+   7. Die transformierten Daten werden im Ordner 'processed_data' im Parquet-Format gespeichert, aufgeteilt in Partitionen basierend auf dem Jahr, Monat, Tag und Stunde des Zeitstempels.
+   8. Die transformierten Daten können mit dem folgenden Befehl gelesen werden:
+
+       ```spark.read.parquet("processed_data")```
+   9. Öffnen Sie das Notebook 'data_analysis.ipynb', um eine einfache Datenanalyse der Daten zu sehen.
 
 ---
 
@@ -129,12 +133,19 @@ Dieses Jupyter-Notebook verwendet PySpark, um eine einfache Datenanalyse eines D
 
 Plots:
 1. **Boxplot**: Ein Boxplot der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
-  ![BoxPlot](https://github.com/mohantypunit/data_engineering/blob/main/img/boxplot.png?raw=true)
+
+   ![BoxPlot](https://github.com/mohantypunit/data_engineering/blob/main/img/boxplot.png?raw=true)
+   
 2. **Zeitreihenplot**: Ein Zeitreihenplot der 'consumption_kwh'-Werte über die Zeit.
+
   ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/timeseriesplot_kwh.png?raw=true)
-1. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+  
+3. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+    
   ![histogram](https://github.com/mohantypunit/data_engineering/blob/main/img/histogram.png?raw=true)
-1. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
+  
+4. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
+  
   ![rolling_mean](https://github.com/mohantypunit/data_engineering/blob/main/img/rollin-avg-hour.png?raw=true)
 
 
