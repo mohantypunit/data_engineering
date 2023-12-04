@@ -30,6 +30,7 @@ Einreichungen:
   - Ist eine Realtime verarbeitung notwendig, oder können die Daten in Batches verarbeitet werden?
   - Wie lange müssen wir die Daten speichern und gibt es spezifische Speicheranforderungen?
   - Gibt es Sicherheits- oder Compliance-Anforderungen für die Daten?
+  - Wie wichtig ist datenqualität und -konsistenz?
 
 ### 2. Technologieüberlegungen
 
