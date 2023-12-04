@@ -130,11 +130,25 @@ Dieses Jupyter-Notebook verwendet PySpark, um eine einfache Datenanalyse eines D
 Plots:
 1. **Boxplot**: Ein Boxplot der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
   ![BoxPlot](https://github.com/mohantypunit/data_engineering/blob/main/img/boxplot.png?raw=true)
-2. **Zeitreihenplot**: Ein Zeitreihenplot der 'consumption_kwh'-Werte über die Zeit.
-  ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/timeseriesplot_kwh.png?raw=true)
-1. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
+
+  Das obige Boxplot zeigt, dass es Ausreißer in den Daten gibt. Einen Ausreißer am rechten Extrem und zwei weitere links. Dies sind die gleichen Ausreißer, die wir im letzten Diagramm gesehen haben.
+
+
+2. **Histogramm**: Ein Histogramm der 'consumption_kwh'-Werte, um die Verteilung der Daten zu visualisieren.
   ![histogram](https://github.com/mohantypunit/data_engineering/blob/main/img/histogram.png?raw=true)
-1. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
+
+  Wir können zwei Anomalien in den Daten erkennen. Die erste ist ein negativer Wert für 'consumption_kwh' und die zweite ein Wert von 0,0. Wir werden diese beiden Werte aus dem Datensatz entfernen.
+
+3. **Zeitreihenplot**: Ein Zeitreihenplot der 'consumption_kwh'-Werte über die Zeit.
+  ![timeseriesplot](https://github.com/mohantypunit/data_engineering/blob/main/img/timeseriesplot_kwh.png?raw=true)
+
+  Dieses Diagramm zeigt, dass keine Ausreißer in den Daten vorhanden sind und die Daten zwischen 0 und 5 kWh variieren.
+
+4. **Rolling_mean**: Ein Plot der 'consumption_kwh'-Werte mit einem gleitenden Durchschnitt von 60 Sekunden, um die Trends in den Daten zu visualisieren.
   ![rolling_mean](https://github.com/mohantypunit/data_engineering/blob/main/img/rollin-avg-hour.png?raw=true)
+
+  Dieses Diagramm zeigt den stündlichen gleitenden Durchschnitt des Energieverbrauchs. Alle Analysen zeigen, dass die Daten ein einfaches Wachstumsmuster vom 31. Dezember 2022 abends um 23:00 Uhr bis zum 1. Januar 2023 um 12:00 Uhr aufweisen. Also ist mitten in der Nacht der Stromverbrauch am niedrigsten und mitten am Tag am höchsten.
+
+  Von 9:00 bis 13:00 Uhr am 1. Januar 2023 liegt der Energieverbrauch nahe dem maximalen Wert des gesamten Datensatzes. Dies könnte darauf hindeuten, dass die Maschine zu dieser Zeit am aktivsten ist. 
 
 
