@@ -1,4 +1,4 @@
 # Ignore hidden folders and files
-./*
+.*/*
 # Ignore the processed_data folder
 /processed_data/
